@@ -1,0 +1,91 @@
+
+<div class="container">
+        <div class="input-group-prepend">
+            <select id="Entreprise" name="Entreprise" class="form-control" [(ngModel)]="selected" (ngModelChange)="filtrerEntreprise()">
+                <option value = "">Filtrer sur une entreprise</option>
+                <option *ngFor="let entrepriseSelect of entreprises" value="{{entrepriseSelect}}" >{{entrepriseSelect}}</option>
+            </select>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Date de début de contrat *</label>
+                        <input id="form_dateDebut" type="date" name="name" class="form-control"  [(ngModel)]="dateDebutSelected" (ngModelChange)="filtrerDate()">               
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Date de fin de contrat</label>
+                        <input id="form_dateFin" type="date" name="name" class="form-control" [(ngModel)]="dateFinSelected" (ngModelChange)="filtrerDate()">                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class=" mt-2 btn btn-info" (click)="resetFiltres()">Reset filtres</button>
+        </div>
+</div>
+
+
+
+<div class="container">
+    <div class="text-center mt-5 ">
+        <h1 >Liste des personnes</h1> 
+    </div>
+    <div class=" text-center col-md-12">
+        <button class="btn btn-info text-light btn-send  pt-2 btn-block" (click)="ajouterPersonne()">Ajouter une personne</button>
+    </div>
+    <div class="row" *ngFor="let personne of personnes">
+        <div class="col-lg-7 mx-auto" *ngIf="personne.afficher">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">   
+                    <div class = "container">   
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p for="form_name"><b>Nom : </b>{{personne.nom}}</p>                        
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p for="form_name"><b>Prénom : </b>{{personne.prenom}}</p>                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p for="form_name"><b>Date de naissance : </b>{{personne.dateNaissance}}</p>                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p for="form_name"><b>Age : </b>{{personne.age}}</p>                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p for="form_name"><b>Emploi actuel : </b>{{personne.emploiActuel}}</p>                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center col-md-12">
+                                    <button class="text-center btn btn-send  pt-2 btn-block btn-info text-light" (click)="ajouterEmploi(personne.id)">Ajouter un emploi</button>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>
+
+                
